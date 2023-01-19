@@ -6,13 +6,24 @@ using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
-    public Text timeText;
+    public static gameManager I;
     public GameObject card;
+    public GameObject firstCard;
+    public GameObject secondCard;
+    public GameObject endText;
+    public Text timeText;
     float time;
     int cardKinds = 8;
+
+    private void Awake()
+    {
+        I = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
+
         List<int> rtans = new List<int>();
         for (int i=0; i<cardKinds*2; i++) {
             rtans.Add(i/2);
@@ -38,5 +49,35 @@ public class gameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         timeText.text = time.ToString("N2");
+    }
+
+    public void isMatched() 
+    {
+        string firstCardImage = firstCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
+        string secondCardImage = secondCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
+
+        if (firstCardImage == secondCardImage)
+        {
+            firstCard.GetComponent<card>().destroyCrad();
+            secondCard.GetComponent<card>().destroyCrad();
+
+            int cardsLeft = GameObject.Find("cards").transform.childCount;
+            if (cardsLeft == 2) {
+                Invoke("GameEnd", 1f);
+            }
+        }
+        else {
+            firstCard.GetComponent<card>().closeCard();
+            secondCard.GetComponent<card>().closeCard();
+        }
+
+        firstCard = null;
+        secondCard = null;
+    }
+
+    void GameEnd()
+    {
+        Time.timeScale = 0f;
+        endText.SetActive(true);
     }
 }
