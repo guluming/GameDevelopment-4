@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
@@ -71,7 +72,7 @@ public class gameManager : MonoBehaviour
 
             int cardsLeft = GameObject.Find("cards").transform.childCount;
             if (cardsLeft == 2) {
-                Invoke("GameEnd", 0.0f);
+                Invoke("GameEnd", 0.1f);
             }
         }
         else {
@@ -87,5 +88,10 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         endText.SetActive(true);
+    }
+
+    public void retryGame() 
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
