@@ -21,6 +21,7 @@ public class gameManager : MonoBehaviour
     {
         I = this;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +71,7 @@ public class gameManager : MonoBehaviour
 
             int cardsLeft = GameObject.Find("cards").transform.childCount;
             if (cardsLeft == 2) {
-                Invoke("GameEnd", 1f);
+                Invoke("GameEnd", 0.0f);
             }
         }
         else {

@@ -7,6 +7,7 @@ public class card : MonoBehaviour
     public Animator anim;
     public AudioClip flip;
     public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,8 @@ public class card : MonoBehaviour
         {
             gameManager.I.firstCard = gameObject;
         }
-        else {
+        else
+        {
             gameManager.I.secondCard = gameObject;
             gameManager.I.isMatched();
         }
@@ -49,7 +51,7 @@ public class card : MonoBehaviour
 
     public void closeCard() 
     {
-        Invoke("closeCardInvoke", 1.0f);
+        Invoke("closeCardInvoke", 0.5f);
     }
 
     public void closeCardInvoke() 
