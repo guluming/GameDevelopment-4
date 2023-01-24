@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class card : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void openCard()
@@ -47,6 +48,7 @@ public class card : MonoBehaviour
     void destroyCardInvoke()
     {
         Destroy(gameObject);
+
     }
 
     public void closeCard() 

@@ -51,6 +51,8 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        card.transform.GetComponent<Button>().interactable = false;
+
         time += Time.deltaTime;
         timeText.text = time.ToString("N2");
 
